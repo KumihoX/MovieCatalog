@@ -1,6 +1,7 @@
 package com.example.emptycomposeactivity.network.favoriteMovies
 
 import com.example.emptycomposeactivity.network.TokenResponse
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
@@ -11,8 +12,8 @@ interface FavoriteMoviesApi {
     suspend fun getFavorites(): FavoriteMovies
 
     @POST("api/favorites/{id}/add")
-    suspend fun postFavorites(@Path("id") addedId: String): TokenResponse
+    suspend fun postFavorites(@Path("id") addedId: String)
 
-    @POST("api/favorites/{id}/delete")
-    suspend fun deleteFavorites(@Path("id") deletedId: String): TokenResponse
+    @DELETE("api/favorites/{id}/delete")
+    suspend fun deleteFavorites(@Path("id") deletedId: String)
 }

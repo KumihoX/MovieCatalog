@@ -16,16 +16,12 @@ class FavoriteMoviesRepository {
         emit(arrFavMovies)
     }.flowOn(Dispatchers.IO)
 
-    fun postFavoriteMovies(id: Int): Flow<TokenResponse> = flow {
-        val tokenData = api.postFavorites(addedId = id.toString())
-        Network.token = tokenData
-        emit(tokenData)
-    }.flowOn(Dispatchers.IO)
+    suspend fun postFavoriteMovies(id: String) {
+        val post = api.postFavorites(addedId = id)
+    }
 
-    fun deleteFavoriteMovies(id: Int): Flow<TokenResponse> = flow {
-        val tokenData = api.deleteFavorites(deletedId = id.toString())
-        Network.token = tokenData
-        emit(tokenData)
-    }.flowOn(Dispatchers.IO)
+    suspend fun deleteFavoriteMovies(id: String) {
+        val tokenData = api.deleteFavorites(deletedId = id)
+    }
 
 }

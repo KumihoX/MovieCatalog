@@ -9,16 +9,16 @@ class Interceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
 
         val request: Request = chain.request().newBuilder().apply {
-            addHeader("accept", "application/json")
-            addHeader("content-Type", "application/x-www-form-urlencoded")
-            Network.token?.let{
-                addHeader("Authorization", "Bearer ${ it.token }")
+            addHeader("Accept", "application/json")
+            addHeader("Content-Type", "application/json")
+            Network.token?.let {
+                addHeader("Authorization", "Bearer ${it.token}")
             }
         }.build()
 
         var response: Response? = null
 
-        return try{
+        return try {
             response = chain.proceed(request)
             response
         } catch (e: Exception) {

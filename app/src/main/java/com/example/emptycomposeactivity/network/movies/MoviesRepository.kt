@@ -9,15 +9,16 @@ import kotlinx.coroutines.flow.flowOn
 class MoviesRepository {
     private val api: MoviesApi = Network.getMoviesApi()
 
-    fun getMovies(): Flow<Movies> = flow {
-        val arrMovies = api.getMovies(numberPage = 1)
+    fun getMovies(numberPage: Int): Flow<Movies> = flow { //тут должна быть страница
+        val arrMovies = api.getMovies(numberPage)
         Network.movies = arrMovies
         emit(arrMovies)
     }.flowOn(Dispatchers.IO)
 
-    fun getDetails(): Flow<Movies> = flow {
-        val arrDetails = api.getDetails(movieId = "1")
-        Network.movies = arrDetails
+    fun getDetails(movieId: String): Flow<MovieDetails> = flow {
+        val arrDetails = api.getDetails(movieId)
+        Network.movieDetail = arrDetails
         emit(arrDetails)
     }.flowOn(Dispatchers.IO)
+
 }

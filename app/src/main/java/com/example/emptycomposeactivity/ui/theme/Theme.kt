@@ -27,6 +27,7 @@ private val LightColorPalette = lightColors(
     */
 )
 
+//Тут задаются всякие цвета, шрифты и они используются везде. Тут еще темная/светлая тема.
 @Composable
 fun EmptyComposeActivityTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),

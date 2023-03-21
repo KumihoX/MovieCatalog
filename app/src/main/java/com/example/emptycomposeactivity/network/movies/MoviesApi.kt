@@ -9,6 +9,6 @@ interface MoviesApi {
     suspend fun getMovies(@Path("page") numberPage: Int): Movies
 
     @GET("api/movies/details/{id}")
-    suspend fun getDetails(@Path("id") movieId: String): Movies
+    suspend fun getDetails(@Path("id") movieId: String): MovieDetails
 
 }
